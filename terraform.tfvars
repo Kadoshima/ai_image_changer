@@ -1,3 +1,3 @@
 # terraform.tfvars
-environment = "test"
+environment  = "test"
 project_name = "aimarketer"
