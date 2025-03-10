@@ -5,7 +5,7 @@ output "storage_account_id" {
 }
 
 output "storage_account_name" {
-  description = "作成されたストレージアカウントの名前かな"
+  description = "作成されたストレージアカウントの名前"
   value       = azurerm_storage_account.this.name
 }
 
