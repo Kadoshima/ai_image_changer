@@ -43,15 +43,7 @@ jobs:
 
     - name: Terraform Init
       id: init
-      run: |
-        # 非対話的にバックエンド設定を行う
-        terraform init \
-          -backend-config="subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }}" \
-          -backend-config="resource_group_name=your-state-rg" \
-          -backend-config="storage_account_name=yourstatestorageaccount" \
-          -backend-config="container_name=tfstate" \
-          -backend-config="key=terraform.tfstate" \
-          -input=false
+      run: terraform init
 
     - name: Terraform Validate
       id: validate
@@ -66,7 +58,7 @@ jobs:
 
     - name: Terraform Plan
       id: plan
-      run: terraform plan -no-color
+      run: terraform plan -var "subscription_id=${{ secrets.SUBSCRIPTION_ID }}" -no-color
       continue-on-error: true
 
     - name: Update Pull Request
